@@ -38,7 +38,7 @@ const configs: Config[] = [
 		env: 'development'
 	},
 	{
-		input: 'src/index.default.ts',
+		input: 'src/index.ts',
 		file: 'dist/index.cjs.js',
 		format: 'cjs',
 		env: 'development'
