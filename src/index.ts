@@ -37,14 +37,14 @@ export interface SerializedParams {
 }
 
 // const a = {
-// 	app_id: '2021003152679248',
+// 	app_id: '20135234674',
 // 	method: 'alipay.system.oauth.token',
 // 	sign_type: 'RSA2',
 // 	version: '1.0',
 // 	charset: 'utf-8',
 // 	timestamp: '2023-07-29 14:50:22',
 // 	_time: '1690613420480',
-// 	code: 'd223f7fe539d44748c9b4787fe50ZX91',
+// 	code: 'xxxx',
 // 	grant_type: 'authorization_code',
 // 	scopes: 'auth_user',
 // 	user_id: undefined
