@@ -4,37 +4,77 @@ import { isObject } from 'js-cool'
 
 const debug = require('debug')('alipaycrypto')
 
-export interface OauthOptions {
+export type PickRequired<T, K extends keyof T> = {
+	[P in K]-?: T[P]
+} & Omit<T, K>
+
+export type OmitRequired<T, K extends keyof T> = {
+	[P in K]: T[P]
+} & Omit<Required<T>, K>
+
+export type PickPartial<T, K extends keyof T> = {
+	[P in K]?: T[P]
+} & Omit<T, K>
+
+export type OmitPartial<T, K extends keyof T> = {
+	[P in K]: T[P]
+} & Omit<Partial<T>, K>
+
+export interface OauthCommonOptions {
 	// see: https://opendocs.alipay.com/open/02ailc
 	app_id: string // 支付宝分配给开发者的应用ID
-	method?: 'alipay.system.oauth.token' // 接口名称
+	method: 'alipay.system.oauth.token' // 接口名称
 	format?: 'JSON' // 仅支持JSON
-	charset?: 'utf-8' | 'gbk' | 'gb2312' // 请求使用的编码格式，默认：utf-8
-	sign_type?: 'RSA' | 'RSA2' // 商户生成签名字符串所使用的签名算法类型，目前支持RSA2和RSA，推荐使用RSA2
+	charset: 'utf-8' | 'gbk' | 'gb2312' // 请求使用的编码格式，默认：utf-8
+	sign_type: 'RSA' | 'RSA2' // 商户生成签名字符串所使用的签名算法类型，目前支持RSA2和RSA，推荐使用RSA2
 	sign: string // 商户请求参数的签名串 see: https://opendocs.alipay.com/open/291/105974
 	timestamp: string // 发送请求的时间，格式"yyyy-MM-dd HH:mm:ss"
-	version?: '1.0' | string // 调用的接口版本
+	version: '1.0' | string // 调用的接口版本
 	app_auth_token?: string // see: https://opendocs.alipay.com/isv/10467/xldcyq
-	// private
-	grant_type: 'authorization_code' | 'refresh_token' // 授权方式，用授权码来换取授权令牌: authorization_code；用刷新令牌来换取一个新的授权令牌: refresh_token
-	code?: string // 授权码，用户对应用授权后得到。本参数在 grant_type 为 authorization_code 时必填；为 refresh_token 时不填
-	refresh_token?: string // 刷新令牌，上次换取访问令牌时得到。本参数在 grant_type 为 authorization_code 时不填；为 refresh_token 时必填，且该值来源于此接口的返回值 app_refresh_token（即至少需要通过 grant_type=authorization_code 调用此接口一次才能获取）
+}
+
+// export interface OauthCommonOptions {
+// 	// see: https://opendocs.alipay.com/open/02ailc
+// 	app_id: string // 支付宝分配给开发者的应用ID
+// 	method?: 'alipay.system.oauth.token' // 接口名称
+// 	format?: 'JSON' // 仅支持JSON
+// 	charset?: 'utf-8' | 'gbk' | 'gb2312' // 请求使用的编码格式，默认：utf-8
+// 	sign_type?: 'RSA' | 'RSA2' // 商户生成签名字符串所使用的签名算法类型，目前支持RSA2和RSA，推荐使用RSA2
+// 	sign: string // 商户请求参数的签名串 see: https://opendocs.alipay.com/open/291/105974
+// 	timestamp: string // 发送请求的时间，格式"yyyy-MM-dd HH:mm:ss"
+// 	version?: '1.0' | string // 调用的接口版本
+// 	app_auth_token?: string // see: https://opendocs.alipay.com/isv/10467/xldcyq
+// }
+
+// see: https://opendocs.alipay.com/open/02ailc
+export interface OauthCodeOptions {
+	grant_type: 'authorization_code' // 授权方式，用授权码来换取授权令牌: authorization_code；用刷新令牌来换取一个新的授权令牌: refresh_token
+	code: string // 授权码，用户对应用授权后得到。本参数在 grant_type 为 authorization_code 时必填；为 refresh_token 时不填
+}
+export interface OauthRefreshOptions {
+	grant_type: 'refresh_token' // 授权方式，用授权码来换取授权令牌: authorization_code；用刷新令牌来换取一个新的授权令牌: refresh_token
+	refresh_token: string // 刷新令牌，上次换取访问令牌时得到。本参数在 grant_type 为 authorization_code 时不填；为 refresh_token 时必填，且该值来源于此接口的返回值 app_refresh_token（即至少需要通过 grant_type=authorization_code 调用此接口一次才能获取）
+}
+export type OauthOptions = OauthCodeOptions | OauthRefreshOptions
+
+export interface SignOptions extends OauthCommonOptions {
 	biz_content?: string // JSON string，请求参数的集合，最大长度不限，除公共参数外所有请求参数都必须放在这个参数中传递，具体参照各产品快速接入文档
 }
 
-export interface Options extends OauthOptions {
+export interface Options {
+	debug?: boolean
 	privateKey: string
 }
 
 export type SerializeParams = Omit<
-	Required<OauthOptions>,
-	'sign' | 'app_auth_token' | 'refresh_token' | 'scopes'
+	Required<SignOptions>,
+	'sign' // | 'app_auth_token' | 'refresh_token' | 'scopes'
 >
 
-export interface SerializedParams {
-	initial: string
-	encrypted: string
-}
+// export interface SerializedParams {
+// 	initial: string
+// 	encrypted: string
+// }
 
 // const a = {
 // 	app_id: '20135234674',
@@ -64,30 +104,19 @@ export interface SerializedParams {
  * ```
  */
 class AlipayCrypto<T extends Options = Options> {
-	// token: string
-	// key: Buffer
-	// iv: Buffer
-	// appID: string
+	defaults: PickPartial<OauthCommonOptions, 'app_id' | 'sign' | 'timestamp'> = {
+		method: 'alipay.system.oauth.token',
+		format: 'JSON',
+		charset: 'utf-8',
+		sign_type: 'RSA2',
+		version: '1.0'
+	}
+
 	options: T
 	constructor(options: T) {
-		// if (!token || !encodingAESKey || !appID) {
-		// 	throw new Error('please check arguments')
-		// }
-		// const AESKey = Buffer.from(encodingAESKey + '=', 'base64')
-		// if (AESKey.length !== 32) {
-		// 	throw new Error('encodingAESKey invalid')
-		// }
-		// this.token = token
-		// this.appID = appID
-		// this.key = AESKey
-		// this.iv = AESKey.subarray(0, 16)
 		this.options = Object.assign(
 			{
-				method: 'alipay.system.oauth.token',
-				format: 'JSON',
-				charset: 'utf-8',
-				sign_type: 'RSA2',
-				version: '1.0'
+				debug: false
 			},
 			options || {}
 		)
@@ -120,23 +149,20 @@ class AlipayCrypto<T extends Options = Options> {
 	 * @param data - Data to be serialized, Strike out the sign field, and strike out parameters with null values.
 	 * @returns result - Serialized data
 	 */
-	serializedParams(data: SerializeParams): SerializedParams {
+	serializedParams(data: SignOptions, encrypt?: boolean): string {
 		if (isObject(data)) {
-			const keyList = Object.keys(data).sort() as Array<keyof SerializeParams>
+			const keyList = Object.keys(data).sort() as Array<keyof SignOptions>
 			const initialParams = []
 			const encryptedParams = []
 			for (const key of keyList) {
-				if ([null, undefined, ''].includes(data[key])) continue
+				if (key === 'sign' || [null, undefined, ''].includes(data[key])) continue
 				initialParams.push(`${key}=${data[key]}`)
-				encryptedParams.push(`${key}=${encodeURIComponent(data[key])}`)
+				encryptedParams.push(`${key}=${encodeURIComponent(data[key]!)}`)
 			}
 			const initial = initialParams.join('&')
 			const encrypted = encryptedParams.join('&')
 
-			return {
-				initial,
-				encrypted
-			}
+			return encrypt === true ? encrypted : initial
 		}
 		throw new Error('"data" must be Object')
 	}
@@ -146,14 +172,22 @@ class AlipayCrypto<T extends Options = Options> {
 	 *
 	 * @since 1.0.0
 	 * @param initial - Serialized data
-	 * @returns result - Serialized data
+	 * @param privateKey - private key, default: options.privateKey
+	 * @returns result - signature
 	 */
-	encrypt(initial: SerializedParams['initial']): string {
+	encrypt(initial: string, privateKey?: string): string
+	encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string
+	encrypt<T extends SignOptions = SignOptions>(initial: string | T, privateKey?: string): string {
+		privateKey ??= this.options.privateKey
 		if (!initial) throw new Error('"initial" is required')
+		if (!privateKey) throw new Error('"privateKey" is required')
+		if (typeof initial === 'object') initial = this.serializedParams(initial)
+
 		const sign = createSign('RSA-SHA256')
 		sign.update(initial)
+
 		return sign.sign(
-			`-----BEGIN RSA PRIVATE KEY-----\n${this.options.privateKey}\n-----END RSA PRIVATE KEY-----`,
+			`-----BEGIN RSA PRIVATE KEY-----\n${privateKey}\n-----END RSA PRIVATE KEY-----`,
 			'base64'
 		)
 	}
