@@ -22,21 +22,19 @@
 
 </div>
 
-## 安装
+## Installation
 
 ```bash
-# 使用pnpm
+# use pnpm
 $ pnpm i alipay-crypto
 
-# 使用yarn
+# use yarn
 $ yarn add alipay-crypto
 ```
 
-## 使用
+## Usage
 
-### 引入和使用
-
-1. require 引入
+### 1. Nodejs require
 
 ```js
 const AlipayCrypto = require('alipay-crypto')
@@ -60,7 +58,7 @@ const sign = alipayCrypto.encrypt(initial)
 const sign = alipayCrypto.encrypt(data)
 ```
 
-2. import 引入
+### 2. ES6 module
 
 ```js
 import AlipayCrypto from 'alipay-crypto'
@@ -68,7 +66,63 @@ import AlipayCrypto from 'alipay-crypto'
 const alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx' })
 ```
 
-## 问题和支持
+### Configuration
+
+active debug mode
+
+```js
+const alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx', debug: true })
+```
+
+### Types
+
+```ts
+declare class AlipayCrypto<T extends Options = Options> {
+  defaults: PickPartial<OauthCommonOptions, 'app_id' | 'sign' | 'timestamp'>
+  options: T
+  constructor(options: T)
+  serializedParams(data: SignOptions, encrypt?: boolean): string
+  encrypt(initial: string, privateKey?: string): string
+  encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string
+}
+export default AlipayCrypto
+
+export declare interface OauthCodeOptions {
+  grant_type: 'authorization_code'
+  code: string
+}
+
+export declare interface OauthCommonOptions {
+  app_id: string
+  method: 'alipay.system.oauth.token'
+  format?: 'JSON'
+  charset: 'utf-8' | 'gbk' | 'gb2312'
+  sign_type: 'RSA' | 'RSA2'
+  sign: string
+  timestamp: string
+  version: '1.0' | string
+  app_auth_token?: string
+}
+
+export declare type OauthOptions = OauthCodeOptions | OauthRefreshOptions
+
+export declare interface OauthRefreshOptions {
+  grant_type: 'refresh_token'
+  refresh_token: string
+}
+
+export declare type PickPartial<T, K extends keyof T> = {
+  [P in K]?: T[P]
+} & Omit<T, K>
+
+export declare type SerializeParams = Omit<Required<SignOptions>, 'sign'>
+
+export declare interface SignOptions extends OauthCommonOptions {
+  biz_content?: string
+}
+```
+
+## Support & Issues
 
 Please open an issue [here](https://github.com/saqqdy/alipay-crypto/issues).
 
