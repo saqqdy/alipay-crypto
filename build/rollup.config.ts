@@ -84,7 +84,7 @@ function createEntry(config: Config) {
 	}
 
 	if (!isGlobalBuild) {
-		_config.external.push('core-js', 'debug', 'js-cool', 'xml2js')
+		_config.external.push('core-js', 'tslib', 'debug', 'js-cool')
 	}
 
 	_config.plugins.push(

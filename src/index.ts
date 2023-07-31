@@ -66,29 +66,10 @@ export interface Options {
 	privateKey: string
 }
 
-export type SerializeParams = Omit<
-	Required<SignOptions>,
-	'sign' // | 'app_auth_token' | 'refresh_token' | 'scopes'
->
-
-// export interface SerializedParams {
-// 	initial: string
-// 	encrypted: string
-// }
-
-// const a = {
-// 	app_id: '20135234674',
-// 	method: 'alipay.system.oauth.token',
-// 	sign_type: 'RSA2',
-// 	version: '1.0',
-// 	charset: 'utf-8',
-// 	timestamp: '2023-07-29 14:50:22',
-// 	_time: '1690613420480',
-// 	code: 'xxxx',
-// 	grant_type: 'authorization_code',
-// 	scopes: 'auth_user',
-// 	user_id: undefined
-// }
+// export type SerializeParams = Omit<
+// 	Required<SignOptions>,
+// 	'sign' // | 'app_auth_token' | 'refresh_token' | 'scopes'
+// >
 
 /**
  * 支付宝加解密nodejs版本
@@ -160,6 +141,8 @@ class AlipayCrypto<T extends Options = Options> {
 			const initial = initialParams.join('&')
 			const encrypted = encryptedParams.join('&')
 
+			debug('serializedParams => data, initial, encrypted', data, initial, encrypted)
+
 			return encrypt === true ? encrypted : initial
 		}
 		throw new Error('"data" must be Object')
@@ -177,19 +160,21 @@ class AlipayCrypto<T extends Options = Options> {
 	encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string
 	encrypt<T extends SignOptions = SignOptions>(initial: string | T, privateKey?: string): string {
 		privateKey ??= this.options.privateKey
+
 		if (!initial) throw new Error('"initial" is required')
 		if (!privateKey) throw new Error('"privateKey" is required')
+		if (!privateKey.includes('BEGIN RSA PRIVATE KEY'))
+			privateKey = `-----BEGIN RSA PRIVATE KEY-----\n${privateKey}\n-----END RSA PRIVATE KEY-----`
 		if (typeof initial === 'object') initial = this.serializedParams(initial)
 
 		const sign = createSign('RSA-SHA256')
 		sign.update(initial)
 
-		return sign.sign(
-			privateKey.includes('BEGIN RSA PRIVATE KEY')
-				? privateKey
-				: `-----BEGIN RSA PRIVATE KEY-----\n${privateKey}\n-----END RSA PRIVATE KEY-----`,
-			'base64'
-		)
+		const signature = sign.sign(privateKey, 'base64')
+
+		debug('encrypt => initial, sign', initial, signature)
+
+		return signature
 	}
 }
 
