@@ -84,6 +84,7 @@ declare class AlipayCrypto<T extends Options = Options> {
   serializedParams(data: SignOptions, encrypt?: boolean): string
   encrypt(initial: string, privateKey?: string): string
   encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string
+  md5<T extends Record<string, unknown> = Record<string, unknown>>(data: string | T): string
 }
 export default AlipayCrypto
 
