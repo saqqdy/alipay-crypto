@@ -1,0 +1,2212 @@
+{
+	"id": 0,
+	"name": "index.md",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 44,
+			"name": "default",
+			"variant": "declaration",
+			"kind": 128,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "支付宝加解密nodejs版本"
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```\nconst AlipayCrypto = require('alipay-crypto');\nconst alipayCrypto = new AlipayCrypto(token, encodingAESKey, appID);\n\nvar [err, encryptedXML] = alipayCrypto.encrypt(xml, timestamp, nonce);\n\nvar [err, decryptedXML] = alipayCrypto.decrypt(signature, timestamp, nonce, encrypted);\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 45,
+					"name": "constructor",
+					"variant": "declaration",
+					"kind": 512,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 97,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L97"
+						}
+					],
+					"signatures": [
+						{
+							"id": 46,
+							"name": "new default",
+							"variant": "signature",
+							"kind": 16384,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 97,
+									"character": 1,
+									"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L97"
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 47,
+									"name": "T",
+									"variant": "typeParam",
+									"kind": 131072,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 41,
+										"name": "Options",
+										"package": "alipay-crypto"
+									},
+									"default": {
+										"type": "reference",
+										"target": 41,
+										"name": "Options",
+										"package": "alipay-crypto"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 48,
+									"name": "options",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": -1,
+										"name": "T",
+										"refersToTypeParameter": true
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 44,
+								"typeArguments": [
+									{
+										"type": "reference",
+										"target": -1,
+										"name": "T",
+										"refersToTypeParameter": true
+									}
+								],
+								"name": "AlipayCrypto",
+								"package": "alipay-crypto"
+							}
+						}
+					]
+				},
+				{
+					"id": 49,
+					"name": "defaults",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 88,
+							"character": 8,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L88"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 7,
+						"typeArguments": [
+							{
+								"type": "reference",
+								"target": 13,
+								"name": "OauthCommonOptions",
+								"package": "alipay-crypto"
+							},
+							{
+								"type": "union",
+								"types": [
+									{
+										"type": "literal",
+										"value": "sign"
+									},
+									{
+										"type": "literal",
+										"value": "app_id"
+									},
+									{
+										"type": "literal",
+										"value": "timestamp"
+									}
+								]
+							}
+						],
+						"name": "PickPartial",
+						"package": "alipay-crypto"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 50,
+					"name": "options",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 96,
+							"character": 8,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L96"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": -1,
+						"name": "T",
+						"refersToTypeParameter": true
+					}
+				},
+				{
+					"id": 55,
+					"name": "encrypt",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 159,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L159"
+						},
+						{
+							"fileName": "index.ts",
+							"line": 160,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L160"
+						},
+						{
+							"fileName": "index.ts",
+							"line": 161,
+							"character": 8,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L161"
+						}
+					],
+					"signatures": [
+						{
+							"id": 56,
+							"name": "encrypt",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "rsa encryption"
+									}
+								],
+								"blockTags": [
+									{
+										"tag": "@since",
+										"content": [
+											{
+												"kind": "text",
+												"text": "1.0.0"
+											}
+										]
+									},
+									{
+										"tag": "@returns",
+										"content": [
+											{
+												"kind": "text",
+												"text": "result - signature"
+											}
+										]
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 159,
+									"character": 1,
+									"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L159"
+								}
+							],
+							"parameters": [
+								{
+									"id": 57,
+									"name": "initial",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Serialized data"
+											}
+										]
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 58,
+									"name": "privateKey",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "private key, default: options.privateKey"
+											}
+										]
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 59,
+							"name": "encrypt",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 160,
+									"character": 1,
+									"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L160"
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 60,
+									"name": "T",
+									"variant": "typeParam",
+									"kind": 131072,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 30,
+										"name": "SignOptions",
+										"package": "alipay-crypto"
+									},
+									"default": {
+										"type": "reference",
+										"target": 30,
+										"name": "SignOptions",
+										"package": "alipay-crypto"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 61,
+									"name": "initial",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": -1,
+										"name": "T",
+										"refersToTypeParameter": true
+									}
+								},
+								{
+									"id": 62,
+									"name": "privateKey",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				},
+				{
+					"id": 63,
+					"name": "md5",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 190,
+							"character": 8,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L190"
+						}
+					],
+					"signatures": [
+						{
+							"id": 64,
+							"name": "md5",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "md5 encrypt"
+									}
+								],
+								"blockTags": [
+									{
+										"tag": "@since",
+										"content": [
+											{
+												"kind": "text",
+												"text": "1.0.0"
+											}
+										]
+									},
+									{
+										"tag": "@returns",
+										"content": [
+											{
+												"kind": "text",
+												"text": "result - encrypted string"
+											}
+										]
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 190,
+									"character": 1,
+									"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L190"
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 65,
+									"name": "T",
+									"variant": "typeParam",
+									"kind": 131072,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Record"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										],
+										"name": "Record",
+										"package": "typescript"
+									},
+									"default": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Record"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										],
+										"name": "Record",
+										"package": "typescript"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 66,
+									"name": "data",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Parameters that need to be md5 encrypted can be either string or object"
+											}
+										]
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "reference",
+												"target": -1,
+												"name": "T",
+												"refersToTypeParameter": true
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				},
+				{
+					"id": 51,
+					"name": "serializedParams",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 131,
+							"character": 8,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L131"
+						}
+					],
+					"signatures": [
+						{
+							"id": 52,
+							"name": "serializedParams",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "serializedParams 序列化参数"
+									}
+								],
+								"blockTags": [
+									{
+										"tag": "@since",
+										"content": [
+											{
+												"kind": "text",
+												"text": "1.0.0"
+											}
+										]
+									},
+									{
+										"tag": "@example",
+										"content": [
+											{
+												"kind": "code",
+												"text": "```ts\nconst data = {\n  app_id: '20135234674',\n  method: 'alipay.system.oauth.token',\n  sign_type: 'RSA2',\n  version: '1.0',\n  charset: 'utf-8',\n  timestamp: '2023-07-29 14:50:22',\n  grant_type: 'authorization_code'\n}\n\nthis.serializedParams(data)\n// initial => 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29 14:50:22&version=1.0'\n// encrypted => 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29%2014%3A50%3A22&version=1.0'\n```"
+											}
+										]
+									},
+									{
+										"tag": "@see",
+										"content": [
+											{
+												"kind": "text",
+												"text": "https://opendocs.alipay.com/common/02khjm"
+											}
+										]
+									},
+									{
+										"tag": "@returns",
+										"content": [
+											{
+												"kind": "text",
+												"text": "result - Serialized data"
+											}
+										]
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 131,
+									"character": 1,
+									"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L131"
+								}
+							],
+							"parameters": [
+								{
+									"id": 53,
+									"name": "data",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Data to be serialized, Strike out the sign field, and strike out parameters with null values."
+											}
+										]
+									},
+									"type": {
+										"type": "reference",
+										"target": 30,
+										"name": "SignOptions",
+										"package": "alipay-crypto"
+									}
+								},
+								{
+									"id": 54,
+									"name": "encrypt",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"children": [
+						45
+					]
+				},
+				{
+					"title": "Properties",
+					"children": [
+						49,
+						50
+					]
+				},
+				{
+					"title": "Methods",
+					"children": [
+						55,
+						63,
+						51
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 87,
+					"character": 6,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L87"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 67,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"target": 41,
+						"name": "Options",
+						"package": "alipay-crypto"
+					},
+					"default": {
+						"type": "reference",
+						"target": 41,
+						"name": "Options",
+						"package": "alipay-crypto"
+					}
+				}
+			]
+		},
+		{
+			"id": 23,
+			"name": "OauthCodeOptions",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 25,
+					"name": "code",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 52,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L52"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 24,
+					"name": "grant_type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 51,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L51"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "authorization_code"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						25,
+						24
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 50,
+					"character": 17,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L50"
+				}
+			]
+		},
+		{
+			"id": 13,
+			"name": "OauthCommonOptions",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 22,
+					"name": "app_auth_token",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 33,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L33"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 14,
+					"name": "app_id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 25,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L25"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 17,
+					"name": "charset",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L28"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "gb2312"
+							},
+							{
+								"type": "literal",
+								"value": "utf-8"
+							},
+							{
+								"type": "literal",
+								"value": "gbk"
+							}
+						]
+					}
+				},
+				{
+					"id": 16,
+					"name": "format",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 27,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L27"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "JSON"
+					}
+				},
+				{
+					"id": 15,
+					"name": "method",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 26,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L26"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "alipay.system.oauth.token"
+					}
+				},
+				{
+					"id": 19,
+					"name": "sign",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 30,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L30"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 18,
+					"name": "sign_type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 29,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L29"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "RSA"
+							},
+							{
+								"type": "literal",
+								"value": "RSA2"
+							}
+						]
+					}
+				},
+				{
+					"id": 20,
+					"name": "timestamp",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 31,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L31"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 21,
+					"name": "version",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 32,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L32"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						22,
+						14,
+						17,
+						16,
+						15,
+						19,
+						18,
+						20,
+						21
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 23,
+					"character": 17,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L23"
+				}
+			],
+			"extendedBy": [
+				{
+					"type": "reference",
+					"target": 30,
+					"name": "SignOptions"
+				}
+			]
+		},
+		{
+			"id": 26,
+			"name": "OauthRefreshOptions",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 27,
+					"name": "grant_type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 55,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L55"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "refresh_token"
+					}
+				},
+				{
+					"id": 28,
+					"name": "refresh_token",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 56,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L56"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						27,
+						28
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 54,
+					"character": 17,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L54"
+				}
+			]
+		},
+		{
+			"id": 41,
+			"name": "Options",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 42,
+					"name": "debug",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 65,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L65"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 43,
+					"name": "privateKey",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 66,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L66"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						42,
+						43
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 64,
+					"character": 17,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L64"
+				}
+			]
+		},
+		{
+			"id": 30,
+			"name": "SignOptions",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 40,
+					"name": "app_auth_token",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 33,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L33"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 22,
+						"name": "OauthCommonOptions.app_auth_token"
+					}
+				},
+				{
+					"id": 32,
+					"name": "app_id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 25,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L25"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 14,
+						"name": "OauthCommonOptions.app_id"
+					}
+				},
+				{
+					"id": 31,
+					"name": "biz_content",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 61,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L61"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 35,
+					"name": "charset",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L28"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "gb2312"
+							},
+							{
+								"type": "literal",
+								"value": "utf-8"
+							},
+							{
+								"type": "literal",
+								"value": "gbk"
+							}
+						]
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 17,
+						"name": "OauthCommonOptions.charset"
+					}
+				},
+				{
+					"id": 34,
+					"name": "format",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 27,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L27"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "JSON"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 16,
+						"name": "OauthCommonOptions.format"
+					}
+				},
+				{
+					"id": 33,
+					"name": "method",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 26,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L26"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "alipay.system.oauth.token"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 15,
+						"name": "OauthCommonOptions.method"
+					}
+				},
+				{
+					"id": 37,
+					"name": "sign",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 30,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L30"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 19,
+						"name": "OauthCommonOptions.sign"
+					}
+				},
+				{
+					"id": 36,
+					"name": "sign_type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 29,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L29"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "RSA"
+							},
+							{
+								"type": "literal",
+								"value": "RSA2"
+							}
+						]
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 18,
+						"name": "OauthCommonOptions.sign_type"
+					}
+				},
+				{
+					"id": 38,
+					"name": "timestamp",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 31,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L31"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 20,
+						"name": "OauthCommonOptions.timestamp"
+					}
+				},
+				{
+					"id": 39,
+					"name": "version",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 32,
+							"character": 1,
+							"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L32"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 21,
+						"name": "OauthCommonOptions.version"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						40,
+						32,
+						31,
+						35,
+						34,
+						33,
+						37,
+						36,
+						38,
+						39
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 60,
+					"character": 17,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L60"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 13,
+					"name": "OauthCommonOptions",
+					"package": "alipay-crypto"
+				}
+			]
+		},
+		{
+			"id": 29,
+			"name": "OauthOptions",
+			"variant": "declaration",
+			"kind": 4194304,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 58,
+					"character": 12,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L58"
+				}
+			],
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "reference",
+						"target": 23,
+						"name": "OauthCodeOptions",
+						"package": "alipay-crypto"
+					},
+					{
+						"type": "reference",
+						"target": 26,
+						"name": "OauthRefreshOptions",
+						"package": "alipay-crypto"
+					}
+				]
+			}
+		},
+		{
+			"id": 10,
+			"name": "OmitPartial",
+			"variant": "declaration",
+			"kind": 4194304,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 19,
+					"character": 12,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L19"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 11,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {}
+				},
+				{
+					"id": 12,
+					"name": "K",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"target": -1,
+							"name": "T",
+							"refersToTypeParameter": true
+						}
+					}
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "mapped",
+						"parameter": "P",
+						"parameterType": {
+							"type": "reference",
+							"target": -1,
+							"name": "K",
+							"refersToTypeParameter": true
+						},
+						"templateType": {
+							"type": "indexedAccess",
+							"indexType": {
+								"type": "reference",
+								"target": -1,
+								"name": "P",
+								"refersToTypeParameter": true
+							},
+							"objectType": {
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							}
+						}
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+							"qualifiedName": "Omit"
+						},
+						"typeArguments": [
+							{
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Partial"
+								},
+								"typeArguments": [
+									{
+										"type": "reference",
+										"target": -1,
+										"name": "T",
+										"refersToTypeParameter": true
+									}
+								],
+								"name": "Partial",
+								"package": "typescript"
+							},
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "K",
+								"refersToTypeParameter": true
+							}
+						],
+						"name": "Omit",
+						"package": "typescript"
+					}
+				]
+			}
+		},
+		{
+			"id": 4,
+			"name": "OmitRequired",
+			"variant": "declaration",
+			"kind": 4194304,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 11,
+					"character": 12,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L11"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 5,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {}
+				},
+				{
+					"id": 6,
+					"name": "K",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"target": -1,
+							"name": "T",
+							"refersToTypeParameter": true
+						}
+					}
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "mapped",
+						"parameter": "P",
+						"parameterType": {
+							"type": "reference",
+							"target": -1,
+							"name": "K",
+							"refersToTypeParameter": true
+						},
+						"templateType": {
+							"type": "indexedAccess",
+							"indexType": {
+								"type": "reference",
+								"target": -1,
+								"name": "P",
+								"refersToTypeParameter": true
+							},
+							"objectType": {
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							}
+						}
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+							"qualifiedName": "Omit"
+						},
+						"typeArguments": [
+							{
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Required"
+								},
+								"typeArguments": [
+									{
+										"type": "reference",
+										"target": -1,
+										"name": "T",
+										"refersToTypeParameter": true
+									}
+								],
+								"name": "Required",
+								"package": "typescript"
+							},
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "K",
+								"refersToTypeParameter": true
+							}
+						],
+						"name": "Omit",
+						"package": "typescript"
+					}
+				]
+			}
+		},
+		{
+			"id": 7,
+			"name": "PickPartial",
+			"variant": "declaration",
+			"kind": 4194304,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 15,
+					"character": 12,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L15"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 8,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {}
+				},
+				{
+					"id": 9,
+					"name": "K",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"target": -1,
+							"name": "T",
+							"refersToTypeParameter": true
+						}
+					}
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "mapped",
+						"parameter": "P",
+						"parameterType": {
+							"type": "reference",
+							"target": -1,
+							"name": "K",
+							"refersToTypeParameter": true
+						},
+						"templateType": {
+							"type": "indexedAccess",
+							"indexType": {
+								"type": "reference",
+								"target": -1,
+								"name": "P",
+								"refersToTypeParameter": true
+							},
+							"objectType": {
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							}
+						},
+						"optionalModifier": "+"
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+							"qualifiedName": "Omit"
+						},
+						"typeArguments": [
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							},
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "K",
+								"refersToTypeParameter": true
+							}
+						],
+						"name": "Omit",
+						"package": "typescript"
+					}
+				]
+			}
+		},
+		{
+			"id": 1,
+			"name": "PickRequired",
+			"variant": "declaration",
+			"kind": 4194304,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 7,
+					"character": 12,
+					"url": "https://github.com/saqqdy/alipay-crypto/blob/510b21c/src/index.ts#L7"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 2,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {}
+				},
+				{
+					"id": 3,
+					"name": "K",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"target": -1,
+							"name": "T",
+							"refersToTypeParameter": true
+						}
+					}
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "mapped",
+						"parameter": "P",
+						"parameterType": {
+							"type": "reference",
+							"target": -1,
+							"name": "K",
+							"refersToTypeParameter": true
+						},
+						"templateType": {
+							"type": "indexedAccess",
+							"indexType": {
+								"type": "reference",
+								"target": -1,
+								"name": "P",
+								"refersToTypeParameter": true
+							},
+							"objectType": {
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							}
+						},
+						"optionalModifier": "-"
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/.pnpm/typescript@5.1.6/node_modules/typescript/lib/lib.es5.d.ts",
+							"qualifiedName": "Omit"
+						},
+						"typeArguments": [
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "T",
+								"refersToTypeParameter": true
+							},
+							{
+								"type": "reference",
+								"target": -1,
+								"name": "K",
+								"refersToTypeParameter": true
+							}
+						],
+						"name": "Omit",
+						"package": "typescript"
+					}
+				]
+			}
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"children": [
+				44
+			]
+		},
+		{
+			"title": "Interfaces",
+			"children": [
+				23,
+				13,
+				26,
+				41,
+				30
+			]
+		},
+		{
+			"title": "Type Aliases",
+			"children": [
+				29,
+				10,
+				4,
+				7,
+				1
+			]
+		}
+	],
+	"packageName": "alipay-crypto",
+	"packageVersion": "1.0.1",
+	"readme": [
+		{
+			"kind": "text",
+			"text": "<div style=\"text-align: center;\" align=\"center\">\n\n# alipay-crypto\n\n支付宝加解密 nodejs 版本\n\n[![NPM version][npm-image]][npm-url]\n[![Codacy Badge][codacy-image]][codacy-url]\n[![tree shaking][tree-shaking-image]][tree-shaking-url]\n![typescript][typescript-url]\n[![Test coverage][codecov-image]][codecov-url]\n[![npm download][download-image]][download-url]\n[![License][license-image]][license-url]\n\n[![Sonar][sonar-image]][sonar-url]\n\n</div>\n\n<div style=\"text-align: center; margin-bottom: 20px;\" align=\"center\">\n\n### **[Documentation](https://www.saqqdy.com/alipay-crypto)** • **[Change Log](./CHANGELOG.md)**\n\n</div>\n\n## Installation\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n# use pnpm\n$ pnpm i alipay-crypto\n\n# use yarn\n$ yarn add alipay-crypto\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n## Usage\n\n### 1. Nodejs require\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```js\nconst AlipayCrypto = require('alipay-crypto')\n\nconst alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx' })\n\nconst data = {\n  app_id: '20135234674',\n  method: 'alipay.system.oauth.token',\n  sign_type: 'RSA2',\n  version: '1.0',\n  charset: 'utf-8',\n  timestamp: '2023-07-29 14:50:22',\n  grant_type: 'authorization_code',\n  biz_content: ''\n}\n\nconst initial = alipayCrypto.serializedParams(data) // 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29 14:50:22&version=1.0'\nconst sign = alipayCrypto.encrypt(initial)\n// or\nconst sign = alipayCrypto.encrypt(data)\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 2. ES6 module\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```js\nimport AlipayCrypto from 'alipay-crypto'\n\nconst alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx' })\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### Configuration\n\nactive debug mode\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```js\nconst alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx', debug: true })\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### Types\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```ts\ndeclare class AlipayCrypto<T extends Options = Options> {\n  defaults: PickPartial<OauthCommonOptions, 'app_id' | 'sign' | 'timestamp'>\n  options: T\n  constructor(options: T)\n  serializedParams(data: SignOptions, encrypt?: boolean): string\n  encrypt(initial: string, privateKey?: string): string\n  encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string\n  md5<T extends Record<string, unknown> = Record<string, unknown>>(data: string | T): string\n}\nexport default AlipayCrypto\n\nexport declare interface OauthCodeOptions {\n  grant_type: 'authorization_code'\n  code: string\n}\n\nexport declare interface OauthCommonOptions {\n  app_id: string\n  method: 'alipay.system.oauth.token'\n  format?: 'JSON'\n  charset: 'utf-8' | 'gbk' | 'gb2312'\n  sign_type: 'RSA' | 'RSA2'\n  sign: string\n  timestamp: string\n  version: '1.0' | string\n  app_auth_token?: string\n}\n\nexport declare type OauthOptions = OauthCodeOptions | OauthRefreshOptions\n\nexport declare interface OauthRefreshOptions {\n  grant_type: 'refresh_token'\n  refresh_token: string\n}\n\nexport declare type PickPartial<T, K extends keyof T> = {\n  [P in K]?: T[P]\n} & Omit<T, K>\n\nexport declare type SerializeParams = Omit<Required<SignOptions>, 'sign'>\n\nexport declare interface SignOptions extends OauthCommonOptions {\n  biz_content?: string\n}\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n## Support & Issues\n\nPlease open an issue [here](https://github.com/saqqdy/alipay-crypto/issues).\n\n## License\n\n[MIT](LICENSE)\n\n[npm-image]: https://img.shields.io/npm/v/alipay-crypto.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/alipay-crypto\n[codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696\n[codacy-url]: https://www.codacy.com/gh/saqqdy/alipay-crypto/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/alipay-crypto&utm_campaign=Badge_Grade\n[tree-shaking-image]: https://badgen.net/bundlephobia/tree-shaking/alipay-crypto\n[tree-shaking-url]: https://bundlephobia.com/package/alipay-crypto\n[typescript-url]: https://badgen.net/badge/icon/typescript?icon=typescript&label\n[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/alipay-crypto.svg?style=flat-square\n[codecov-url]: https://codecov.io/github/saqqdy/alipay-crypto?branch=master\n[download-image]: https://img.shields.io/npm/dm/alipay-crypto.svg?style=flat-square\n[download-url]: https://npmjs.org/package/alipay-crypto\n[license-image]: https://img.shields.io/badge/License-MIT-blue.svg\n[license-url]: LICENSE\n[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_alipay-crypto\n[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_alipay-crypto"
+		}
+	],
+	"symbolIdMap": {
+		"0": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": ""
+		},
+		"1": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "PickRequired"
+		},
+		"2": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"3": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "K"
+		},
+		"4": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OmitRequired"
+		},
+		"5": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"6": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "K"
+		},
+		"7": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "PickPartial"
+		},
+		"8": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"9": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "K"
+		},
+		"10": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OmitPartial"
+		},
+		"11": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"12": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "K"
+		},
+		"13": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions"
+		},
+		"14": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.app_id"
+		},
+		"15": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.method"
+		},
+		"16": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.format"
+		},
+		"17": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.charset"
+		},
+		"18": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.sign_type"
+		},
+		"19": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.sign"
+		},
+		"20": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.timestamp"
+		},
+		"21": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.version"
+		},
+		"22": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.app_auth_token"
+		},
+		"23": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCodeOptions"
+		},
+		"24": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCodeOptions.grant_type"
+		},
+		"25": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCodeOptions.code"
+		},
+		"26": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthRefreshOptions"
+		},
+		"27": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthRefreshOptions.grant_type"
+		},
+		"28": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthRefreshOptions.refresh_token"
+		},
+		"29": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthOptions"
+		},
+		"30": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "SignOptions"
+		},
+		"31": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "SignOptions.biz_content"
+		},
+		"32": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.app_id"
+		},
+		"33": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.method"
+		},
+		"34": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.format"
+		},
+		"35": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.charset"
+		},
+		"36": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.sign_type"
+		},
+		"37": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.sign"
+		},
+		"38": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.timestamp"
+		},
+		"39": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.version"
+		},
+		"40": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "OauthCommonOptions.app_auth_token"
+		},
+		"41": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "Options"
+		},
+		"42": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "Options.debug"
+		},
+		"43": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "Options.privateKey"
+		},
+		"44": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto"
+		},
+		"45": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.__constructor"
+		},
+		"46": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto"
+		},
+		"47": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.T"
+		},
+		"48": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "options"
+		},
+		"49": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.defaults"
+		},
+		"50": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.options"
+		},
+		"51": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.serializedParams"
+		},
+		"52": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.serializedParams"
+		},
+		"53": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "data"
+		},
+		"54": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "encrypt"
+		},
+		"55": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.encrypt"
+		},
+		"56": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.encrypt"
+		},
+		"57": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "initial"
+		},
+		"58": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "privateKey"
+		},
+		"59": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.encrypt"
+		},
+		"60": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"61": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "initial"
+		},
+		"62": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "privateKey"
+		},
+		"63": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.md5"
+		},
+		"64": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.md5"
+		},
+		"65": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "T"
+		},
+		"66": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "data"
+		},
+		"67": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "AlipayCrypto.T"
+		}
+	}
+}
