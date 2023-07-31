@@ -1,6 +1,6 @@
 import { createSign } from 'crypto'
 import { isObject } from 'js-cool'
-// import md5 from './md5'
+import md5 from './md5'
 
 const debug = require('debug')('alipaycrypto')
 
@@ -85,7 +85,7 @@ export interface Options {
  * ```
  */
 class AlipayCrypto<T extends Options = Options> {
-	defaults: PickPartial<OauthCommonOptions, 'app_id' | 'sign' | 'timestamp'> = {
+	public defaults: PickPartial<OauthCommonOptions, 'app_id' | 'sign' | 'timestamp'> = {
 		method: 'alipay.system.oauth.token',
 		format: 'JSON',
 		charset: 'utf-8',
@@ -93,7 +93,7 @@ class AlipayCrypto<T extends Options = Options> {
 		version: '1.0'
 	}
 
-	options: T
+	public options: T
 	constructor(options: T) {
 		this.options = Object.assign(
 			{
@@ -128,7 +128,7 @@ class AlipayCrypto<T extends Options = Options> {
 	 * @param data - Data to be serialized, Strike out the sign field, and strike out parameters with null values.
 	 * @returns result - Serialized data
 	 */
-	serializedParams(data: SignOptions, encrypt?: boolean): string {
+	public serializedParams(data: SignOptions, encrypt?: boolean): string {
 		if (isObject(data)) {
 			const keyList = Object.keys(data).sort() as Array<keyof SignOptions>
 			const initialParams = []
@@ -158,7 +158,10 @@ class AlipayCrypto<T extends Options = Options> {
 	 */
 	encrypt(initial: string, privateKey?: string): string
 	encrypt<T extends SignOptions = SignOptions>(initial: T, privateKey?: string): string
-	encrypt<T extends SignOptions = SignOptions>(initial: string | T, privateKey?: string): string {
+	public encrypt<T extends SignOptions = SignOptions>(
+		initial: string | T,
+		privateKey?: string
+	): string {
 		privateKey ??= this.options.privateKey
 
 		if (!initial) throw new Error('"initial" is required')
@@ -175,6 +178,17 @@ class AlipayCrypto<T extends Options = Options> {
 		debug('encrypt => initial, sign', initial, signature)
 
 		return signature
+	}
+
+	/**
+	 * md5 encrypt
+	 *
+	 * @since 1.0.0
+	 * @param data - Parameters that need to be md5 encrypted can be either string or object
+	 * @returns result - encrypted string
+	 */
+	public md5<T extends Record<string, unknown> = Record<string, unknown>>(data: string | T) {
+		return md5(data)
 	}
 }
 
