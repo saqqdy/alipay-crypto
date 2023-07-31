@@ -139,11 +139,9 @@ class AlipayCrypto<T extends Options = Options> {
 	 *   grant_type: 'authorization_code'
 	 * }
 	 *
-	 * serializedParams(data)
-	 * // {
-	 * //   initial: 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29 14:50:22&version=1.0',
-	 * //   encrypted: 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29%2014%3A50%3A22&version=1.0'
-	 * //}
+	 * this.serializedParams(data)
+	 * // initial => 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29 14:50:22&version=1.0'
+	 * // encrypted => 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29%2014%3A50%3A22&version=1.0'
 	 * ```
 	 * @see https://opendocs.alipay.com/common/02khjm
 	 * @param data - Data to be serialized, Strike out the sign field, and strike out parameters with null values.
@@ -187,7 +185,9 @@ class AlipayCrypto<T extends Options = Options> {
 		sign.update(initial)
 
 		return sign.sign(
-			`-----BEGIN RSA PRIVATE KEY-----\n${privateKey}\n-----END RSA PRIVATE KEY-----`,
+			privateKey.includes('BEGIN RSA PRIVATE KEY')
+				? privateKey
+				: `-----BEGIN RSA PRIVATE KEY-----\n${privateKey}\n-----END RSA PRIVATE KEY-----`,
 			'base64'
 		)
 	}

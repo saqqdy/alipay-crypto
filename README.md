@@ -34,74 +34,38 @@ $ yarn add alipay-crypto
 
 ## 使用
 
-> 在实例化和加解密方法均支持传入 options: `normalizeTags`, `buildXmlOptions`, `xmlOptions`，加解密方法里面传入的 options 优先级更高。
-
-> `normalizeTags` 支持将 xml 属性由驼峰转下划线分隔的小写形式；`buildXmlOptions` 透传用于生成 xml 字符串的配置；`xmlOptions` 透传用于解析 xml 字符串的配置。
-
-> 注意：`normalizeTags` 会全量覆盖 `xmlOptions` 里面的 `tagNameProcessors` 方法，如果想要自定义 `tagNameProcessors`，请不要传入 `normalizeTags`
-
 ### 引入和使用
 
 1. require 引入
 
 ```js
-const { AlipayCrypto } = require('alipay-crypto')
+const AlipayCrypto = require('alipay-crypto')
 
-/**
- * class AlipayCrypto
- *
- * @param {string} token 消息校验Token，开发者在代替公众号或小程序接收到消息时，用此Token来校验消息。
- * @param {string} aesKey 消息加解密Key，在代替公众号或小程序收发消息过程中使用。必须是长度为43位的字符串，只能是字母和数字。
- * @param {string} appID 小程序appID
- * @param {object} options Options
- * @return {Object} AlipayCrypto instance
- */
-const alipayCrypto = new AlipayCrypto(token, aesKey, appID, options)
+const alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx' })
 
-/**
- * decrypt data
- *
- * @param {string} encrypt encrypt data
- * @param {string} timestamp timestamp
- * @param {string} nonce nonce
- * @param {object} options Options
- * @return {Object} decrypt data
- */
-const data = await alipayCrypto.decrypt(encrypt, timestamp, nonce, options)
+const data = {
+  app_id: '20135234674',
+  method: 'alipay.system.oauth.token',
+  sign_type: 'RSA2',
+  version: '1.0',
+  charset: 'utf-8',
+  timestamp: '2023-07-29 14:50:22',
+  grant_type: 'authorization_code',
+  biz_content: ''
+}
+
+const initial = alipayCrypto.serializedParams(data) // 'app_id=20135234674&charset=utf-8&grant_type=authorization_code&method=alipay.system.oauth.token&sign_type=RSA2&timestamp=2023-07-29 14:50:22&version=1.0'
+const sign = alipayCrypto.encrypt(initial)
+// or
+const sign = alipayCrypto.encrypt(data)
 ```
 
 2. import 引入
 
 ```js
-import {
-  // PKCS7Decode,
-  // PKCS7Encode,
-  AlipayCrypto
-  // aes256Decrypt,
-  // aes256Encrypt,
-  // buildXML,
-  // buildXMLSync,
-  // parseXML,
-  // parseXMLSync,
-  // sha1
-} from 'alipay-crypto'
+import AlipayCrypto from 'alipay-crypto'
 
-const alipayCrypto = new AlipayCrypto(token, aesKey, appID, options)
-const data = await alipayCrypto.decrypt(encrypt, timestamp, nonce, options)
-```
-
-### 使用配置
-
-持将 xml 属性由驼峰转下划线分隔的小写形式：`ComponentVerifyTicket => component_verify_ticket`
-
-```js
-// normalizeTags可传入布尔值或者字符串，传入字符串时使用该字符串分隔，例如：normalizeTags = "__"，得到：`ComponentVerifyTicket => component__verify__ticket`
-const alipayCrypto = new AlipayCrypto(token, aesKey, appID, {
-  normalizeTags: true,
-  buildXmlOptions: {}, // 透传用于生成 xml 字符串的配置
-  xmlOptions: {} // 透传用于解析 xml 字符串的配置
-})
-const data = await alipayCrypto.decrypt(encrypt, timestamp, nonce, options)
+const alipayCrypto = new AlipayCrypto({ privateKey: 'xxxxxx' })
 ```
 
 ## 问题和支持
